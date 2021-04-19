@@ -36,14 +36,13 @@ def draw_bar_plot():
   df_bar = df.copy()
   df_bar['month'] = df_bar.index.month
   df_bar['year'] = df_bar.index.year
-  df_bar = df_bar.groupby(['month', 'year'])['value'].mean().unstack()
+  df_bar = df_bar.groupby(['year', 'month'])['value'].mean().unstack()
 
   # Draw bar plot
   fig=df_bar.plot.bar().figure
   plt.xlabel("Years")
   plt.ylabel("Average Page Views")
   plt.legend(['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'])
-  plt.show()
 
   # Save image and return fig (don't change this part)
   fig.savefig('bar_plot.png')
@@ -62,5 +61,5 @@ def draw_box_plot():
 
   fig = plt.subplots()
   # Save image and return fig (don't change this part)
-  fig.savefig('box_plot.png')
+  #fig.savefig('box_plot.png')
   return fig
